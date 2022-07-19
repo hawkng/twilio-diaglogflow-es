@@ -6,6 +6,9 @@ Twilio Flex + DialogFlow CX via SMS
 
 The simple chatbot is built based on the [How to Build an Appointment Scheduler with Dialogflow Tutorial](https://youtu.be/oU88sHd6ilE?list=PLIivdWyY5sqK5SM34zbkitWLOV-b3V40B)
 
+![image](https://user-images.githubusercontent.com/29279065/179710411-cd955237-9d5f-4fc0-a48b-87a2840d27ab.png)
+
+
 #### Changes required:
 
 1. Update the code <b><i>@google-cloud/dialogflow.protected.js </i></b> to use ES library
