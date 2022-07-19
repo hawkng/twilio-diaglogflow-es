@@ -28,7 +28,7 @@ The simple chatbot is built based on the [How to Build an Appointment Scheduler 
 ![image](https://user-images.githubusercontent.com/29279065/179699045-792cc210-194a-4bc8-99c2-cb721d8e4720.png)
 
 
-5. Update the Widget DialogflowDetectIntent in Twilio Studio with the deployed Twilio Service and Function accordingly.<br/>
+5. Update the Widget **DialogflowDetectIntent** in Twilio Studio with the deployed Twilio Service and Function accordingly.<br/>
    [Sample json](https://github.com/hawkng/twilio-diaglogflow-es/blob/main/studio-sample.json)
 
 #### References:
