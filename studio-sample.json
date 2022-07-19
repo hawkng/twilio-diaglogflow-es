@@ -1,0 +1,140 @@
+{
+  "description": "DialogFlow ES Template",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "next": "SetUtteranceVariable",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingConversationMessage"
+        },
+        {
+          "event": "incomingRequest"
+        },
+        {
+          "event": "incomingParent"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "SetUtteranceVariable",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "DialogflowDetectIntent",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "{{trigger.message.Body}}",
+            "key": "utterance"
+          }
+        ],
+        "offset": {
+          "x": -70,
+          "y": 210
+        }
+      }
+    },
+    {
+      "name": "DialogflowDetectIntent",
+      "type": "run-function",
+      "transitions": [
+        {
+          "next": "SendDialogflowAnswerAndWaitForReply",
+          "event": "success"
+        },
+        {
+          "event": "fail"
+        }
+      ],
+      "properties": {
+        "service_sid": "",
+        "environment_sid": "",
+        "offset": {
+          "x": 310,
+          "y": 610
+        },
+        "function_sid": "",
+        "parameters": [
+          {
+            "value": "{{flow.variables.utterance}}",
+            "key": "utterance"
+          },
+          {
+            "value": "{{flow.channel.address}}}",
+            "key": "dialogflow_session_id"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SendDialogflowAnswerAndWaitForReply",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "ResetUtteranceVariable",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -40,
+          "y": 930
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "{% for i in (1..widgets.DialogflowDetectIntent.parsed.fulfillmentMessages.size) %}\n{{widgets.DialogflowDetectIntent.parsed.fulfillmentMessages[forloop.index0].text.text}}\n{% endfor %}",
+        "timeout": "60"
+      }
+    },
+    {
+      "name": "ResetUtteranceVariable",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "DialogflowDetectIntent",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "{{widgets.SendDialogflowAnswerAndWaitForReply.inbound.Body}}",
+            "key": "utterance"
+          }
+        ],
+        "offset": {
+          "x": -510,
+          "y": 460
+        }
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}
