@@ -24,8 +24,9 @@ Twilio Flex + DialogFlow CX via SMS
 ![image](https://user-images.githubusercontent.com/29279065/179699045-792cc210-194a-4bc8-99c2-cb721d8e4720.png)
 
 
-4. Update the Widget DialogflowDetectIntent with the deployed Twilio Service and Function accordingly.
-
+4. Update the Widget DialogflowDetectIntent with the deployed Twilio Service and Function accordingly.<br/>
+   [Sample json](https://github.com/hawkng/twilio-diaglogflow-es/blob/main/studio-sample.json)
 
 #### References:
 https://www.twilio.com/docs/studio/tutorials/customer-support-menu#connect-your-whatsapp-sender-to-your-studio-flow
+
