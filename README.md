@@ -1,7 +1,7 @@
 # twilio-diaglogflow-es
 Integrate Twilio Flex with Google Dialogflow <b>ES</b> using <b>WhatsApp</b>
 
-Adpated from Twilio Blog (https://www.twilio.com/blog/flex-dialogflow-cx-digital) which consists of
+Adapted from Twilio Blog (https://www.twilio.com/blog/flex-dialogflow-cx-digital) which consists of
 Twilio Flex + DialogFlow CX via SMS
 
 The simple chatbot is built based on the [How to Build an Appointment Scheduler with Dialogflow Tutorial](https://youtu.be/oU88sHd6ilE?list=PLIivdWyY5sqK5SM34zbkitWLOV-b3V40B)
